@@ -45,4 +45,10 @@ class LinkController extends Controller
 
         return view('dashboard', compact('links'));
     }
+
+    public function destroy(Link $link) {
+        $link->delete();
+
+        return redirect()->route('dashboard');
+    }
 }

@@ -40,6 +40,17 @@
                             <a>
                                 Подробнее
                             </a>
+
+                            <form action="{{ route('links.destroy', $link) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+
+                                <button
+                                    class="text-red-600 hover:underline"
+                                >
+                                    Удалить
+                                </button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach

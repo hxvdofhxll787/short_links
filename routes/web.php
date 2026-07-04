@@ -14,6 +14,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/dashboard', [LinkController::class, 'index'])->name('dashboard');
+    Route::delete('/links/{link}', [LinkController::class, 'destroy'])->name('links.destroy');
 });
 
 Route::get('/{code}', RedirectController::class)->name('redirect');

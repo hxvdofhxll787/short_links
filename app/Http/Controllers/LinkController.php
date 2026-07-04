@@ -51,4 +51,10 @@ class LinkController extends Controller
 
         return redirect()->route('dashboard');
     }
+
+    public function show(Link $link) {
+        $link->load('clicks');
+
+        return view('links.show', compact('link'));
+    }
 }

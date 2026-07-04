@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="max-w-3xl mx-auto py-10">
+    <div class="max-w-3xl mx-auto py-10 my-10">
 
         <form action="{{ route('links.store') }}" method="POST">
             @csrf

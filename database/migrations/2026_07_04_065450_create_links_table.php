@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('links', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')
+                ->nullable()
+                ->constrained()
+                ->cascadeOnDelete();
+            $table->string('original_url');
+            $table->string('short_url')->unique();
             $table->timestamps();
         });
     }

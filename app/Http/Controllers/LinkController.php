@@ -47,12 +47,16 @@ class LinkController extends Controller
     }
 
     public function destroy(Link $link) {
+        abort_if($link->user_id !== auth()->id(), 403);
+
         $link->delete();
 
         return redirect()->route('dashboard');
     }
 
     public function show(Link $link) {
+        abort_if($link->user_id !== auth()->id(), 403);
+
         $link->load('clicks');
 
         return view('links.show', compact('link'));

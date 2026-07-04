@@ -18,7 +18,7 @@ return new class extends Migration
                 ->constrained()
                 ->cascadeOnDelete();
             $table->string('original_url');
-            $table->string('short_url')->unique();
+            $table->string('short_code')->unique();
             $table->timestamps();
         });
     }

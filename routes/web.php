@@ -1,11 +1,11 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\LinkController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [LinkController::class, 'create'])->name('home');
+Route::post('/links', [LinkController::class, 'store'])->name('links.store');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

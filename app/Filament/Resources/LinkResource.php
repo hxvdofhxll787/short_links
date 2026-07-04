@@ -19,6 +19,11 @@ class LinkResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationLabel = 'Мои ссылки';
+
+    protected static ?string $pluralModelLabel = 'Мои ссылки';
+
+
     public static function form(Form $form): Form
     {
         return $form
@@ -39,13 +44,32 @@ class LinkResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('original_url')
+                    ->label('Оригинальный URL'),
+
+                Tables\Columns\TextColumn::make('short_code')
+                    ->copyable()
+                    ->label('Код')
+                    ->formatStateUsing(fn ($state) => url($state)),
+
+                Tables\Columns\TextColumn::make('clicks_count')
+                    ->counts('clicks')
+                    ->label('Клики'),
+
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->label('Создана'),
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\ViewAction::make()
+                    ->label('Статистика'),
+                Tables\Actions\EditAction::make()
+                    ->label('Изменить'),
+                Tables\Actions\DeleteAction::make()
+                    ->label('Удалить'),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -59,6 +83,12 @@ class LinkResource extends Resource
         return [
             //
         ];
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->where('user_id', auth()->id());
     }
 
     public static function getPages(): array

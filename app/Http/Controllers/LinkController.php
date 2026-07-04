@@ -17,6 +17,13 @@ class LinkController extends Controller
             'original_url' => ['required', 'url'],
         ]);
 
+        $link = Link::create([
+            'user_id' => auth()->id(),
+            'original_url' => $request->original_url,
+            'short_code' => $this->generateUniqCode(),
+        ]);
+
+        return back()->with('short_url', url($link->short_code));
     }
 
     private function generateUniqCode(): string {

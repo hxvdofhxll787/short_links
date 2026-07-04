@@ -5,7 +5,7 @@
             @csrf
 
             <div>
-                <label>Original URL</label>
+                <label>Введите ссылку для сокращения</label>
 
                 <input
                     type="url"
@@ -19,10 +19,23 @@
             <button
                 class="mt-4 px-5 py-2 bg-blue-600 text-white rounded"
             >
-                Shorten
+                Сократить
             </button>
 
         </form>
+
+        @if(session('short_url'))
+            <div class="rounded">
+                <strong>Ваша сокращенная ссылка:</strong>
+
+                <a
+                    href="{{ session('short_url') }}"
+                    class="text-blue-600 underline"
+                >
+                    {{ session('short_url') }}
+                </a>
+            </div>
+        @endif
 
     </div>
 </x-app-layout>

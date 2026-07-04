@@ -16,7 +16,7 @@
                         {{ __('Создать ссылку') }}
                     </x-nav-link>
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('Мои ссылки') }}
                     </x-nav-link>
                 </div>
             </div>

@@ -1,17 +1,52 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
-                </div>
-            </div>
-        </div>
+    <div class="max-w-6xl mx-auto py-8">
+        <h2 class="text-2xl font-bold mb-6">
+            Мои ссылки
+        </h2>
+
+        @if($links->isEmpty())
+            <p>У вас еще нет ссылок</p>
+        @else
+
+            <table class="w-full border">
+                <thead>
+                <tr class="border-b">
+                    <th>Оригинальный URL</th>
+                    <th>Короткий URL</th>
+                    <th>Кол-во переходов</th>
+                    <th> </th>
+                </tr>
+                </thead>
+
+                <tbody>
+
+                @foreach($links as $link)
+                    <tr class="border-b">
+                        <td>
+                            <a href="{{ url($link->original_url) }}" class="underline text-blue-500">
+                                {{ url($link->original_url) }}
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{{ url($link->short_code) }}" class="underline text-blue-500">
+                                {{ url($link->short_code) }}
+                            </a>
+                        </td>
+                        <td>
+                            {{ $link->clicks_count }}
+                        </td>
+                        <td>
+                            <a>
+                                Подробнее
+                            </a>
+                        </td>
+                    </tr>
+                @endforeach
+
+                </tbody>
+            </table>
+        @endif
+
     </div>
 </x-app-layout>

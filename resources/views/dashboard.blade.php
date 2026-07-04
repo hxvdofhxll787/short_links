@@ -37,7 +37,7 @@
                             {{ $link->clicks_count }}
                         </td>
                         <td>
-                            <a>
+                            <a href="{{ route('links.show',$link) }}" class="hover:underline">
                                 Подробнее
                             </a>
 

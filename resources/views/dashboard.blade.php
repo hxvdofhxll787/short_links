@@ -24,12 +24,12 @@
                 @foreach($links as $link)
                     <tr class="border-b">
                         <td>
-                            <a href="{{ url($link->original_url) }}" class="underline text-blue-500">
+                            <a href="{{ url($link->original_url) }}" class="underline text-blue-500" target="_blank">
                                 {{ url($link->original_url) }}
                             </a>
                         </td>
                         <td>
-                            <a href="{{ url($link->short_code) }}" class="underline text-blue-500">
+                            <a href="{{ url($link->short_code) }}" class="underline text-blue-500" target="_blank">
                                 {{ url($link->short_code) }}
                             </a>
                         </td>

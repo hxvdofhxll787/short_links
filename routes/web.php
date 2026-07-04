@@ -18,6 +18,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/links/{link}', [LinkController::class, 'show'])->name('links.show');
 });
 
-Route::get('/{code}', RedirectController::class)->name('redirect');
-
 require __DIR__.'/auth.php';
+
+Route::get('/{code}', RedirectController::class)->name('redirect');

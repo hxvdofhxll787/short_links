@@ -31,6 +31,7 @@
                 <a
                     href="{{ session('short_url') }}"
                     class="text-blue-600 underline"
+                    target="_blank"
                 >
                     {{ session('short_url') }}
                 </a>

@@ -23,7 +23,9 @@ class LinkController extends Controller
             'short_code' => $this->generateUniqCode(),
         ]);
 
-        return back()->with('short_url', url($link->short_code));
+        return redirect()
+            ->route('home')
+            ->with('short_url', url($link->short_code));
     }
 
     private function generateUniqCode(): string {

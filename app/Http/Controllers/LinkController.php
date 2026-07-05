@@ -35,30 +35,4 @@ class LinkController extends Controller
 
         return $code;
     }
-
-    public function index() {
-        $links = auth()
-            ->user()
-            ->links()
-            ->withCount('clicks')
-            ->get();
-
-        return view('dashboard', compact('links'));
-    }
-
-    public function destroy(Link $link) {
-        abort_if($link->user_id !== auth()->id(), 403);
-
-        $link->delete();
-
-        return redirect()->route('dashboard');
-    }
-
-    public function show(Link $link) {
-        abort_if($link->user_id !== auth()->id(), 403);
-
-        $link->load('clicks');
-
-        return view('links.show', compact('link'));
-    }
 }

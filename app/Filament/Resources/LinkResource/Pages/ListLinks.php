@@ -14,7 +14,8 @@ class ListLinks extends ListRecords
     {
         return [
             Actions\CreateAction::make()
-                ->label('Создать ссылку'),
+                ->label('Создать ссылку')
+                ->url(route('home')),
         ];
     }
 }

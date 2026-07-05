@@ -12,6 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use \App\Filament\Resources\LinkResource\RelationManagers\ClicksRelationManager;
 
 class LinkResource extends Resource
 {
@@ -29,14 +30,15 @@ class LinkResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('original_url')
+                    ->label('Оригинальный URL')
                     ->url()
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(1024),
 
                 Forms\Components\TextInput::make('short_code')
+                    ->label('Код')
                     ->disabled()
-                    ->dehydrated()
-                    ->required(),
+                    ->dehydrated(),
             ]);
     }
 
@@ -81,7 +83,7 @@ class LinkResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            ClicksRelationManager::class,
         ];
     }
 
@@ -96,6 +98,7 @@ class LinkResource extends Resource
         return [
             'index' => Pages\ListLinks::route('/'),
             'create' => Pages\CreateLink::route('/create'),
+            'view' => Pages\ViewLink::route('/{record}'),
             'edit' => Pages\EditLink::route('/{record}/edit'),
         ];
     }

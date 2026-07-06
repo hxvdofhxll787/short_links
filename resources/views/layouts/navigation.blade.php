@@ -15,7 +15,7 @@
             <!-- Main name -->
             <div class="flex">
                 <div class="sm:flex items-center justify-center">
-                    <a href="{{ route('home') }}" class="text-xl font-black text-blue-950 hover:text-blue-600">
+                    <a href="{{ route('home') }}" class="text-xl font-semibold text-blue-900 hover:text-blue-500">
                         {{ __('Сокращатель ссылок') }}
                     </a>
                 </div>

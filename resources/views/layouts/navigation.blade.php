@@ -1,14 +1,23 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto px-4 sm:px-6 lg:px">
         <div class="flex justify-between h-16">
-            <div class="flex">
+{{--            <div class="flex">--}}
 
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
-                        {{ __('Создать ссылку') }}
-                    </x-nav-link>
+{{--                <!-- Navigation Links -->--}}
+{{--                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">--}}
+{{--                    <x-nav-link :href="route('home')" :active="request()->routeIs('home')">--}}
+{{--                        {{ __('Создать ссылку') }}--}}
+{{--                    </x-nav-link>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+
+            <!-- Main name -->
+            <div class="flex">
+                <div class="sm:flex items-center justify-center">
+                    <a href="{{ route('home') }}" class="text-xl font-black text-blue-950 hover:text-blue-600">
+                        {{ __('Сокращатель ссылок') }}
+                    </a>
                 </div>
             </div>
 
@@ -35,13 +44,13 @@
 
                     <x-slot name="content">
                         @auth
-                            <x-responsive-nav-link :href="route('filament.admin.resources.links.index')">
+                            <x-dropdown-link :href="route('filament.admin.resources.links.index')">
                                 {{ __('Кабинет') }}
-                            </x-responsive-nav-link>
+                            </x-dropdown-link>
                         @else
-                            <x-responsive-nav-link :href="route('login')">
+                            <x-dropdown-link :href="route('login')">
                                 {{ __('Войти') }}
-                            </x-responsive-nav-link>
+                            </x-dropdown-link>
                         @endauth
 
                         @auth

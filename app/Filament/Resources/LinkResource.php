@@ -47,11 +47,12 @@ class LinkResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('original_url')
-                    ->label('Оригинальный URL'),
+                    ->label('Оригинальный URL')
+                    ->copyable(),
 
                 Tables\Columns\TextColumn::make('short_code')
                     ->copyable()
-                    ->label('Код')
+                    ->label('Короткий URL')
                     ->formatStateUsing(fn ($state) => url($state)),
 
                 Tables\Columns\TextColumn::make('clicks_count')
@@ -68,8 +69,6 @@ class LinkResource extends Resource
             ->actions([
                 Tables\Actions\ViewAction::make()
                     ->label('Статистика'),
-                Tables\Actions\EditAction::make()
-                    ->label('Изменить'),
                 Tables\Actions\DeleteAction::make()
                     ->label('Удалить'),
             ])

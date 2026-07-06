@@ -9,6 +9,7 @@ use App\Filament\Resources\LinkResource\RelationManagers\ClicksRelationManager;
 use Filament\Infolists;
 use Filament\Infolists\Infolist;
 use Filament\Infolists\Components\TextEntry;
+use App\Models\Click;
 
 class ViewLink extends ViewRecord
 {

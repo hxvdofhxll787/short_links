@@ -39,6 +39,6 @@ class LatestClicks extends BaseWidget
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Дата')
                     ->dateTime('d.m.Y H:i:s'),
-            ]);
+            ])->paginated([5]);
     }
 }

@@ -68,8 +68,6 @@ class LinkResource extends Resource
             ->actions([
                 Tables\Actions\ViewAction::make()
                     ->label('Статистика'),
-                Tables\Actions\EditAction::make()
-                    ->label('Изменить'),
                 Tables\Actions\DeleteAction::make()
                     ->label('Удалить'),
             ])

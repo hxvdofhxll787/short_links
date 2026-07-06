@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="max-w-3xl mx-auto py-10 my-10">
+    <div class="max-w-3xl p-5 bg-white rounded-md grid gap-5" style="margin: 20px">
 
         <form action="{{ route('links.store') }}" method="POST">
             @csrf
@@ -10,8 +10,8 @@
                 <input
                     type="url"
                     name="original_url"
-                    class="w-full border rounded p-2 mt-2"
-                    placeholder="https://example.com"
+                    class="w-full border rounded-md p-2 mt-2"
+                    placeholder="https://example.com/page"
                     required
                 >
             </div>
@@ -26,11 +26,13 @@
 
         @if(session('short_url'))
             <div class="rounded">
-                <strong>Ваша сокращенная ссылка:</strong>
+                <strong class="text-green-600">Ваша сокращенная ссылка</strong>
+
+                <span> -> </span>
 
                 <a
                     href="{{ session('short_url') }}"
-                    class="text-blue-600 underline"
+                    class="text-blue-500 underline"
                     target="_blank"
                 >
                     {{ session('short_url') }}
